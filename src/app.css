@@ -17,12 +17,12 @@ body {
 
 .hidden-input {
     position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
+    top: 0px;
+    left: 0px;
+    background-color: transparent;
     outline: none;
     border: none;
-    color: white;
+    color: transparent;
     z-index: -10;
 }
 

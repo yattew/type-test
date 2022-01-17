@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Text from "./text";
 import Timer from "./timer";
+import useIsActive from '../hooks'
 
 async function getWords() {
     let res = await fetch("https://random-word-api.herokuapp.com/word?number=10");
@@ -22,6 +23,8 @@ function getWpm(time, charArray, charInput) {
     return Math.round(correctWords / time * 60);
 }
 
+
+
 function Test() {
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
@@ -29,12 +32,11 @@ function Test() {
     const [cursorClass, setCursorClass] = useState("cursor-move-right");
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
-
+    const active = useIsActive("hidden-input");
     useEffect(() => {
         getWords().then((data) => setCharArray(data));
         inputRef.current.focus();
     }, []);
-
     function newText() {
         getWords().then((data) => setCharArray(data));
         setTimerState({ time: 0, state: "paused" });
@@ -58,11 +60,10 @@ function Test() {
         }
     }
     function handleKeyDown(e) {
-        if(e.keyCode === 8)
-        {
+        if (e.keyCode === 8) {
             setCursorClass("cursor-move-left");
         }
-        else{
+        else {
             setCursorClass("cursor-move-right");
         }
     }
@@ -75,8 +76,9 @@ function Test() {
                     onChange={handleCharInput}
                     ref={inputRef}
                     onKeyDown={handleKeyDown}
+                    id="hidden-input"
                 />
-                <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass}/>
+                <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass} />
             </div>
 
             <br />
