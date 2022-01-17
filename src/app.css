@@ -39,19 +39,36 @@ body {
     user-select: none;
 }
 
-.cursor {
+.cursor-move-left{
     height: 100%;
     border-left: solid 2px black;
-    animation:cursor-move 170ms;
-    position:relative;
-    /* transition: linear 1s; */
+    position: relative;
+    animation:cursor-blink 1000ms infinite,cursor-move-left 100ms;
 }
-@keyframes cursor-move {
+
+.cursor-move-right{
+    height: 100%;
+    border-left: solid 2px black;
+    position: relative;
+    animation:cursor-blink 1000ms infinite,cursor-move-right 100ms;
+}
+
+@keyframes cursor-move-right {
     0% {
         right:var(--letter-width);
     }
     100%{
         right:0px;
+    }
+}
+
+@keyframes cursor-move-left {
+    0% {
+        left:var(--letter-width);
+    }
+    100%{
+        border-color: white;
+        left:0px;
     }
 }
 

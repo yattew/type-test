@@ -1,5 +1,5 @@
 import React from "react";
-import {useEffect,useState,useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import Text from "./text";
 import Timer from "./timer";
 
@@ -22,13 +22,14 @@ function getWpm(time, charArray, charInput) {
     return Math.round(correctWords / time * 60);
 }
 
-function Test(){
+function Test() {
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
+    const [cursorClass, setCursorClass] = useState("cursor-move-right");
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
-    
+
     useEffect(() => {
         getWords().then((data) => setCharArray(data));
         inputRef.current.focus();
@@ -56,11 +57,26 @@ function Test(){
             setWpm(getWpm(timerState.time, charArray, charInput))
         }
     }
+    function handleKeyDown(e) {
+        if(e.keyCode === 8)
+        {
+            setCursorClass("cursor-move-left");
+        }
+        else{
+            setCursorClass("cursor-move-right");
+        }
+    }
     return (
         <>
-            <div onClick={()=>inputRef.current.focus()}>
-                <input  value={charInput} className="hidden-input" onChange={handleCharInput} ref={inputRef} />
-                <Text  charArray={charArray} charInput={charInput} />
+            <div onClick={() => inputRef.current.focus()}>
+                <input
+                    value={charInput}
+                    className="hidden-input"
+                    onChange={handleCharInput}
+                    ref={inputRef}
+                    onKeyDown={handleKeyDown}
+                />
+                <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass}/>
             </div>
 
             <br />
