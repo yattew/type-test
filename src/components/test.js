@@ -23,8 +23,6 @@ function getWpm(time, charArray, charInput) {
     return Math.round(correctWords / time * 60);
 }
 
-
-
 function Test() {
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
