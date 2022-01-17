@@ -1,3 +1,8 @@
+:root{
+    --font-size:1.2rem;
+    --letter-width:calc(var(--font-size) * 0.65);
+}
+
 body {
     display: flex;
     align-items: center;
@@ -6,6 +11,8 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
+    font-family: monospace;
+    font-size: var(--font-size);
 }
 
 .hidden-input {
@@ -35,7 +42,17 @@ body {
 .cursor {
     height: 100%;
     border-left: solid 2px black;
-    animation: cursor-blink 1s infinite;
+    animation:cursor-move 170ms;
+    position:relative;
+    /* transition: linear 1s; */
+}
+@keyframes cursor-move {
+    0% {
+        right:var(--letter-width);
+    }
+    100%{
+        right:0px;
+    }
 }
 
 @keyframes cursor-blink {
@@ -50,4 +67,9 @@ body {
     100% {
         border-color: black;
     }
+}
+
+.letter{
+    display:inline-block;
+    width:var(--letter-width);
 }

@@ -10,6 +10,18 @@ async function getWords() {
     return data;
 }
 
+function getWpm(time, charArray, charInput) {
+    let correctChars = 0;
+    charArray = charArray.join("");
+    charInput = charInput;
+    for (let i = 0; i < charArray.length; i++) {
+        if (charArray[i] === charInput[i])
+            correctChars++;
+    }
+    let correctWords = correctChars / 5;
+    return Math.round(correctWords / time * 60);
+}
+
 function Test(){
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
@@ -28,17 +40,6 @@ function Test(){
         setCharInput("");
         setWpm(0);
         inputRef.current.focus();
-    }
-    function getWpm(time, charArray, charInput) {
-        let correctChars = 0;
-        charArray = charArray.join("");
-        charInput = charInput;
-        for (let i = 0; i < charArray.length; i++) {
-            if (charArray[i] === charInput[i])
-                correctChars++;
-        }
-        let correctWords = correctChars / 5;
-        return Math.round(correctWords / time * 60);
     }
     function handleCharInput(e) {
         if (charInput.length !== charArray.length)
