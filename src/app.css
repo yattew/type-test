@@ -13,11 +13,9 @@ body {
     width: 100vw;
     font-family: monospace;
     font-size: var(--font-size);
-    /* font-weight: ; */
 }
-
 .hidden-input {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     background-color: transparent;
@@ -95,10 +93,42 @@ body {
 .controls{
     display: flex;
     justify-content: space-between;
+    
 }
 
 .test{
     width:80vw;
+    height:10%;
+}
+
+.test::after{
+    --size:100px;
+    --height:calc(var(--size) * 0.5);
+    content: '';
+    width:var(--size);
+    height: var(--height);
+    display:block;
+    position: relative;
+    bottom: calc(var(--height) - 20px);
+    left: calc(100% - 80px);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    z-index: -5;
+}
+
+.test::before{
+    --size:100px;
+    --height:calc(var(--size) * 0.5);
+    content: '';
+    width:var(--size);
+    height: var(--height);
+    display:block;
+    position: relative;
+    top: calc(var(--height) - 20px);
+    left: -20px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    z-index: -5;
 }
 
 button {
@@ -112,6 +142,7 @@ button {
     border: 1px solid rgb(80, 80, 80);
     transition: all 100ms;
     transform: scale(1);
+    cursor: pointer;
 }
 
 button:hover {
@@ -124,7 +155,6 @@ button:active {
 
 .num-words-selector{
     display: flex;
-    /* flex-direction: column; */
 }
 .num-words-selector div{
     cursor: pointer;

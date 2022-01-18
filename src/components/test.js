@@ -32,13 +32,8 @@ function Test() {
     const [numWords, setNumWords] = useState(10);
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
-    useEffect(() => {
-        getWords(numWords).then((data) => setCharArray(data));
-        inputRef.current.focus();
-    }, []);
-    useEffect(()=>{
-        newText();
-    },[numWords]);
+    const isActive = useIsActive("hidden-input");
+    useEffect(newText, [numWords]);
     function newText() {
         getWords(numWords).then((data) => setCharArray(data));
         setTimerState({ time: 0, state: "paused" });
@@ -70,8 +65,8 @@ function Test() {
         }
     }
     return (
-        <div className="test">
-            <div onClick={() => inputRef.current.focus()}>
+        <div className="test" style={!isActive?{cursor:"pointer"}:{}} onClick={() => inputRef.current.focus()}>
+            <div >
                 <input
                     value={charInput}
                     className="hidden-input"
@@ -80,7 +75,12 @@ function Test() {
                     onKeyDown={handleKeyDown}
                     id="hidden-input"
                 />
-                <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass} />
+                {
+                    isActive ?
+                        <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass} />
+                        : "click here to activate the test"
+                }
+
             </div>
 
             <br />
@@ -90,10 +90,11 @@ function Test() {
                     <span>| wpm: {wpm}</span>
                 </div>
                 <div className="num-words-selector">
-                    <NumWordsSelector numWords = {numWords} setNumWords={setNumWords}/>
+                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} />
                 </div>
                 <button onClick={newText}>New Test</button>
             </div>
+            
         </div>
     );
 }

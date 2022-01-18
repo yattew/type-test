@@ -15,8 +15,7 @@ function useIsActive(id){
         {
             setActive(true);
         }
-    },[])
-    console.log(active);
+    },[]);
     return active;
 }
 
