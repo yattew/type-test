@@ -10,12 +10,6 @@ function useIsActive(id){
             setActive(false);
         }
     },[document.activeElement]);
-    useEffect(()=>{
-        if(document.activeElement.id == id)
-        {
-            setActive(true);
-        }
-    },[]);
     return active;
 }
 
