@@ -3,9 +3,10 @@ import { useEffect, useState, useRef } from "react";
 import Text from "./text";
 import Timer from "./timer";
 import useIsActive from '../hooks'
+import NumWordsSelector from "./numWordsSelector";
 
-async function getWords() {
-    let res = await fetch("https://random-word-api.herokuapp.com/word?number=10");
+async function getWords(numWords) {
+    let res = await fetch(`https://random-word-api.herokuapp.com/word?number=${numWords}`);
     let data = await res.json();
     data = data.join(" ").split("");
     return data;
@@ -28,15 +29,18 @@ function Test() {
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
     const [cursorClass, setCursorClass] = useState("cursor-move-right");
+    const [numWords, setNumWords] = useState(10);
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
-    const active = useIsActive("hidden-input");
     useEffect(() => {
-        getWords().then((data) => setCharArray(data));
+        getWords(numWords).then((data) => setCharArray(data));
         inputRef.current.focus();
     }, []);
+    useEffect(()=>{
+        newText();
+    },[numWords]);
     function newText() {
-        getWords().then((data) => setCharArray(data));
+        getWords(numWords).then((data) => setCharArray(data));
         setTimerState({ time: 0, state: "paused" });
         setCharInput("");
         setWpm(0);
@@ -66,7 +70,7 @@ function Test() {
         }
     }
     return (
-        <>
+        <div className="test">
             <div onClick={() => inputRef.current.focus()}>
                 <input
                     value={charInput}
@@ -80,13 +84,18 @@ function Test() {
             </div>
 
             <br />
-            <div>
-                <Timer timerState={timerState} setTimerState={setTimerState} />
-                <span>| wpm: {wpm}</span>
+            <div className="controls">
+                <div>
+                    <Timer timerState={timerState} setTimerState={setTimerState} />
+                    <span>| wpm: {wpm}</span>
+                </div>
+                <div className="num-words-selector">
+                    <NumWordsSelector numWords = {numWords} setNumWords={setNumWords}/>
+                </div>
+                <button onClick={newText}>New Test</button>
             </div>
-            <button onClick={newText}>New text</button>
-
-        </>
+        </div>
     );
 }
+
 export default Test;

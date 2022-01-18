@@ -13,6 +13,7 @@ body {
     width: 100vw;
     font-family: monospace;
     font-size: var(--font-size);
+    /* font-weight: ; */
 }
 
 .hidden-input {
@@ -41,14 +42,14 @@ body {
 
 .cursor-move-left{
     height: 100%;
-    border-left: solid 2px black;
+    border-left: solid 1px black;
     position: relative;
     animation:cursor-blink 1000ms infinite,cursor-move-left 100ms;
 }
 
 .cursor-move-right{
     height: 100%;
-    border-left: solid 2px black;
+    border-left: solid 1px black;
     position: relative;
     animation:cursor-blink 1000ms infinite,cursor-move-right 100ms;
 }
@@ -89,4 +90,46 @@ body {
 .letter{
     display:inline-block;
     width:var(--letter-width);
+}
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+}
+
+.test{
+    width:80vw;
+}
+
+button {
+    background-color: rgba(158, 158, 158, 0);
+    outline: none;
+    border: none;
+    padding: 0.3rem 1.8rem;
+    margin-top: -0.3rem;
+    letter-spacing: 2px;
+    border-radius: 0px;
+    border: 1px solid rgb(80, 80, 80);
+    transition: all 100ms;
+    transform: scale(1);
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.num-words-selector{
+    display: flex;
+    /* flex-direction: column; */
+}
+.num-words-selector div{
+    cursor: pointer;
+}
+.active-num-words{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(80, 80, 80);
 }

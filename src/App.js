@@ -4,7 +4,7 @@ import Test from "./components/test";
 
 
 function App() {
-    return <div className="test"><Test/></div>
+    return <Test/>
 }
 
 export default App;
