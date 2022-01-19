@@ -20,6 +20,9 @@ function getWpm(time, charArray, charInput) {
 
 function Test() {
     let numWordsOptions = [15, 20, 25];
+
+    
+    //hooks
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
@@ -28,6 +31,8 @@ function Test() {
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
     const isActive = useIsActive("hidden-input");
+
+
     useEffect(newText, [numWords]);
     function newText() {
         let words = getWords(numWords);
@@ -53,15 +58,17 @@ function Test() {
         }
     }
     function handleKeyDown(e) {
-        if (e.keyCode === 8) {
+        if (e.keyCode === 8)
             setCursorClass("cursor-move-left");
-        }
-        else {
+        else
             setCursorClass("cursor-move-right");
-        }
     }
     return (
-        <div className="test" style={!isActive?{cursor:"pointer"}:{}} onClick={() => inputRef.current.focus()}>
+        <div
+            className="test"
+            style={!isActive ? { cursor: "pointer" } : {}}
+            onClick={() => inputRef.current.focus()}
+        >
             <div >
                 <input
                     value={charInput}
@@ -86,11 +93,11 @@ function Test() {
                     <span className="partition no-select"></span><span>wpm: {wpm}</span>
                 </div>
                 <div className="num-words-selector">
-                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions}/>
+                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions} />
                 </div>
                 <button onClick={newText}>New Test</button>
             </div>
-            
+
         </div>
     );
 }
