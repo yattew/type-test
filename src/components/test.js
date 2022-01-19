@@ -70,12 +70,13 @@ function Test() {
                     <>
                         <div
                             className="focus-warning"
-                            style={!isActive ? { cursor: "pointer" } : {}}
+                            style={!isActive ? { cursor: "pointer" } : { zIndex: "-100" }}
                             onClick={() => inputRef.current.focus()}
                         >
                             <div>
                                 click here!
                             </div>
+
                         </div>
                     </>
                     : null

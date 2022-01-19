@@ -4,7 +4,6 @@ function NumWordsSelector({ numWords, setNumWords, numWordsOptions }) {
     function handleClick(numWords) {
         setNumWords(numWords);
     }
-
     return <>
         {
             numWordsOptions.map((num, idx) => {
