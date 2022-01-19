@@ -170,7 +170,9 @@ button:active {
 .num-words-selector div {
     cursor: pointer;
 }
-
+/* .num-words-selector div:hover{
+    background-color: yellow;
+} */
 
 .active-num-words {
     background-color: rgba(0, 0, 0, 0.1);

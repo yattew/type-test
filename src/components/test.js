@@ -76,12 +76,15 @@ function Test() {
                             <div>
                                 click here!
                             </div>
-
                         </div>
                     </>
                     : null
             }
-            <div onClick={() => inputRef.current.focus()} className="test" style={!isActive ? { filter: "blur(5px)" } : {}}>
+            <div
+                onClick={() => inputRef.current.focus()}
+                className="test"
+                style={!isActive ? { filter: "blur(5px)" } : {}}
+            >
                 <div >
                     <input
                         value={charInput}
