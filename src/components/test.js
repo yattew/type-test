@@ -21,7 +21,7 @@ function getWpm(time, charArray, charInput) {
 function Test() {
     let numWordsOptions = [15, 20, 25];
 
-    
+
     //hooks
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
@@ -64,40 +64,48 @@ function Test() {
             setCursorClass("cursor-move-right");
     }
     return (
-        <div
-            className="test"
-            style={!isActive ? { cursor: "pointer" } : {}}
-            onClick={() => inputRef.current.focus()}
-        >
-            <div >
-                <input
-                    value={charInput}
-                    className="hidden-input"
-                    onChange={handleCharInput}
-                    ref={inputRef}
-                    onKeyDown={handleKeyDown}
-                    id="hidden-input"
-                />
-                {
-                    isActive ?
-                        <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass} />
-                        : "click here to activate the test"
-                }
+        <div className="test-container">
+            {
+                !isActive ?
+                    <>
+                        <div
+                            className="focus-warning"
+                            style={!isActive ? { cursor: "pointer" } : {}}
+                            onClick={() => inputRef.current.focus()}
+                        >
+                            <div>
+                                click here!
+                            </div>
+                        </div>
+                    </>
+                    : null
+            }
+            <div onClick={() => inputRef.current.focus()} className="test" style={!isActive ? { filter: "blur(5px)" } : {}}>
+                <div >
+                    <input
+                        value={charInput}
+                        className="hidden-input"
+                        onChange={handleCharInput}
+                        ref={inputRef}
+                        onKeyDown={handleKeyDown}
+                        id="hidden-input"
+                    />
+                    <Text charArray={charArray} charInput={charInput} cursorClass={cursorClass} />
 
-            </div>
-
-            <br />
-            <div className="controls">
-                <div>
-                    <Timer timerState={timerState} setTimerState={setTimerState} />
-                    <span className="partition no-select"></span><span>wpm: {wpm}</span>
                 </div>
-                <div className="num-words-selector">
-                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions} />
-                </div>
-                <button onClick={newText}>New Test</button>
-            </div>
 
+                <br />
+                <div className="controls">
+                    <div>
+                        <Timer timerState={timerState} setTimerState={setTimerState} />
+                        <span className="partition no-select"></span><span>wpm: {wpm}</span>
+                    </div>
+                    <div className="num-words-selector">
+                        <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions} />
+                    </div>
+                    <button onClick={newText}>New Test</button>
+                </div>
+            </div>
         </div>
     );
 }

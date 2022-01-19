@@ -4,3 +4,4 @@ import App from './App';
 
 
 ReactDom.render(<StrictMode><App/></StrictMode>,document.getElementById("root"));
+// ReactDom.render(<StrictMode>hello</StrictMode>,document.getElementById("root"));
