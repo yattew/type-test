@@ -21,7 +21,6 @@ function getWpm(time, charArray, charInput) {
 function Test() {
     let numWordsOptions = [15, 20, 25];
 
-
     //hooks
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");

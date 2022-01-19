@@ -170,9 +170,6 @@ button:active {
 .num-words-selector div {
     cursor: pointer;
 }
-/* .num-words-selector div:hover{
-    background-color: yellow;
-} */
 
 .active-num-words {
     background-color: rgba(0, 0, 0, 0.1);
@@ -202,6 +199,17 @@ button:active {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+}
+
+
+.hints{
+    position:fixed;
+    bottom:-20px;
+    right:0px;
+    margin: 1rem;
+}
+.hints li{
+    list-style: none;
 }
 
 
