@@ -1,16 +1,17 @@
 import React from "react";
 
-function NumWordsSelector({ numWords, setNumWords }) {
+function NumWordsSelector({ numWords, setNumWords, numWordsOptions }) {
     function handleClick(numWords) {
         setNumWords(numWords);
-        // console.log(numWords)
     }
-    let numWordsOptions = [10, 15, 20];
+    
     return <>
         {
             numWordsOptions.map((num, idx) => {
                 return <>
-                    <div className={numWords === num ? "active-num-words" : ""} onClick={() => handleClick(num)}>{num}</div>
+                    <div className={numWords === num ? "active-num-words" : ""} onClick={() => handleClick(num)}>
+                        <span className="no-select">{num}</span>
+                    </div>
                     {idx === numWordsOptions.length - 1 ? null : <span className="no-select partition"></span>}
                 </>;
             })

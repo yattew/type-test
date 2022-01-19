@@ -19,11 +19,12 @@ function getWpm(time, charArray, charInput) {
 }
 
 function Test() {
+    let numWordsOptions = [15, 20, 25];
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
     const [cursorClass, setCursorClass] = useState("cursor-move-right");
-    const [numWords, setNumWords] = useState(10);
+    const [numWords, setNumWords] = useState(numWordsOptions[0]);
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
     const isActive = useIsActive("hidden-input");
@@ -85,7 +86,7 @@ function Test() {
                     <span className="partition no-select"></span><span>wpm: {wpm}</span>
                 </div>
                 <div className="num-words-selector">
-                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} />
+                    <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions}/>
                 </div>
                 <button onClick={newText}>New Test</button>
             </div>
