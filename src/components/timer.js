@@ -13,7 +13,7 @@ function Timer(props) {
         }, 1000);
     }, []);
     return (
-        <span>time: {timerState.time} </span>
+        <span>time: {timerState.time}</span>
     );
 }
 

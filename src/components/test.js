@@ -4,13 +4,7 @@ import Text from "./text";
 import Timer from "./timer";
 import useIsActive from '../hooks'
 import NumWordsSelector from "./numWordsSelector";
-
-async function getWords(numWords) {
-    let res = await fetch(`https://random-word-api.herokuapp.com/word?number=${numWords}`);
-    let data = await res.json();
-    data = data.join(" ").split("");
-    return data;
-}
+import getWords from "../words";
 
 function getWpm(time, charArray, charInput) {
     let correctChars = 0;
@@ -35,7 +29,8 @@ function Test() {
     const isActive = useIsActive("hidden-input");
     useEffect(newText, [numWords]);
     function newText() {
-        getWords(numWords).then((data) => setCharArray(data));
+        let words = getWords(numWords);
+        setCharArray(words);
         setTimerState({ time: 0, state: "paused" });
         setCharInput("");
         setWpm(0);
@@ -87,7 +82,7 @@ function Test() {
             <div className="controls">
                 <div>
                     <Timer timerState={timerState} setTimerState={setTimerState} />
-                    <span>| wpm: {wpm}</span>
+                    <span className="partition no-select"></span><span>wpm: {wpm}</span>
                 </div>
                 <div className="num-words-selector">
                     <NumWordsSelector numWords={numWords} setNumWords={setNumWords} />

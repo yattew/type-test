@@ -7,10 +7,10 @@ function Text(props) {
         let i = 0;
         for (; i < userText.length; i++) {
             if (text[i] === userText[i]) {
-                res.push(<span className="letter" key={i} style={{ color: "green" }}>{text[i]}</span>)
+                res.push(<span className="letter correct" key={i}>{text[i]}</span>)
             }
             else {
-                res.push(<span className="letter" key={i} style={{ color: "red" }}>{text[i]}</span>)
+                res.push(<span className="letter wrong" key={i}>{text[i]}</span>)
             }
         }
 
