@@ -1,5 +1,6 @@
 import "./app.css";
 import Help from "./components/help";
+import Contact from "./components/contact";
 import Test from "./components/test";
 
 
@@ -9,11 +10,15 @@ function App() {
         "WPM: Words Per Minute",
         "New Test: Tab + Enter"
     ];
+    let contacts = [
+        ["github","yattew"]
+    ]
     return (
         <>
             <Test />
             <div className="bottom-container">
                 <Help helps={helps} />
+                <Contact contacts={contacts}/>
             </div>
 
         </>

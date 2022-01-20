@@ -76,7 +76,7 @@ function Test() {
                             onClick={() => inputRef.current.focus()}
                         >
                             <div>
-                                click here!
+                            Click to focus
                             </div>
                         </div>
                     </>
