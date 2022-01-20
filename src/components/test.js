@@ -19,14 +19,14 @@ function getWpm(time, charArray, charInput) {
 }
 
 function Test() {
-    let numWordsOptions = [15, 20, 25];
+    let numWordsOptions = [10, 15, 20, 25, 30];
 
     //hooks
     const [charArray, setCharArray] = useState([]);
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
     const [cursorClass, setCursorClass] = useState("cursor-move-right");
-    const [numWords, setNumWords] = useState(numWordsOptions[0]);
+    const [numWords, setNumWords] = useState(numWordsOptions[Math.floor(numWordsOptions.length/2)]);
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
     const isActive = useIsActive("hidden-input");
@@ -57,6 +57,9 @@ function Test() {
         }
     }
     function handleKeyDown(e) {
+        if([37, 38, 39, 40].indexOf(e.keyCode) > -1){
+            e.preventDefault();
+        }
         if (e.keyCode === 8)
             setCursorClass("cursor-move-left");
         else

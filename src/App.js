@@ -1,14 +1,21 @@
 import "./app.css";
-import Hints from "./components/hints";
+import Help from "./components/help";
 import Test from "./components/test";
 
 
 function App() {
-    let hints= ["New Test: Tab + Enter"];
+    let helps = [
+        "Select the Number of words from the selector below the test",
+        "WPM: Words Per Minute",
+        "New Test: Tab + Enter"
+    ];
     return (
         <>
             <Test />
-            <Hints hints={hints} />
+            <div className="bottom-container">
+                <Help helps={helps} />
+            </div>
+
         </>
     );
 }
