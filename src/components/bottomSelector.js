@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from "react";
 import Help from "./help";
 import About from "./about";
-import ThemeToggle from "./themeToggle";
 
 const OPTIONS = {
     help: <Help />,

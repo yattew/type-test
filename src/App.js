@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./app.css";
 import BottomSelector from "./components/bottomSelector";
-import Help from "./components/help";
 import Test from "./components/test";
 
 
