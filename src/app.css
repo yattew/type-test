@@ -1,16 +1,16 @@
 :root {
     --font-size: 1.2rem;
     --letter-width: calc(var(--font-size) * 0.65);
-    
+
 }
 
-.light-mode{
+.light-mode {
     --background: whitesmoke;
     --text: #000000;
     --border: rgb(80, 80, 80);
 }
 
-.dark-mode{
+.dark-mode {
     --background: #262a33;
     --text: #d4ced9;
     --border: #15c8a3;
@@ -20,7 +20,7 @@
 body {
     padding: 0;
     margin: 0;
-    color:var(--text);
+    color: var(--text);
 }
 
 button {
@@ -35,7 +35,7 @@ button {
     transition: all 100ms;
     transform: scale(1);
     cursor: pointer;
-    color:var(--text);
+    color: var(--text);
 }
 
 button:hover {
@@ -158,17 +158,29 @@ button:active {
 
 
 .cursor-move-left {
-    height: 100%;
-    border-left: solid 2px var(--border);
+    display: inline-block;
+    height: 0px;
     position: relative;
     animation: cursor-blink 1000ms infinite, cursor-move-left 100ms;
 }
 
 .cursor-move-right {
-    height: 100%;
-    border-left: solid 2px var(--border);
+    display: inline-block;
+    height: 0px;
     position: relative;
-    animation: cursor-blink 1000ms infinite, cursor-move-right 100ms;
+    animation: cursor-move-right 100ms;
+}
+
+.cursor-move-right::after,
+.cursor-move-left::after {
+    --cursor-height: 25px;
+    position: absolute;
+    bottom: -7px;
+    left: 0px;
+    content: "";
+    height: var(--cursor-height);
+    border-left: solid 2px var(--border);
+    animation: cursor-blink 1000ms infinite;
 }
 
 @keyframes cursor-move-right {
@@ -303,53 +315,5 @@ button:active {
     margin-left: 20px;
     margin-right: 10px;
 }
+
 /* *********************************************************************************************** */
-
-
-/* ********************************************* media querries *********************** *********** */
-
-/* @media (prefers-color-scheme: dark) {
-
-    body {
-        background-color: var(--dark-background);
-        color: var(--dark-text);
-    }
-
-    button {
-        color: var(--dark-text);
-        border-color: var(--dark-border);
-    }
-
-    .partition {
-        border-color: var(--dark-border);
-    }
-
-    .active-num-words {
-        background-color: rgba(0, 0, 0, 0);
-    }
-
-    .cursor-move-right,
-    .cursor-move-left,
-    .test-container::before,
-    .test-container::after,
-    .active-num-words,
-    .bottom-box-wrapper>div::before,
-    .bottom-box-wrapper>div::after,
-    .bottom-container>div {
-        border-color: var(--dark-border);
-    }
-
-    @keyframes cursor-blink {
-        0% {
-            border-color: var(--dark-border);
-        }
-
-        50% {
-            border-color: transparent;
-        }
-
-        100% {
-            border-color: var(--dark-border);
-        }
-    }
-} */
