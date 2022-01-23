@@ -1,28 +1,41 @@
 :root {
     --font-size: 1.2rem;
     --letter-width: calc(var(--font-size) * 0.65);
-    --dark-background: #262a33;
-    --dark-text: #d4ced9;
-    --dark-border: #15c8a3;
+    
 }
+
+.light-mode{
+    --background: whitesmoke;
+    --text: #000000;
+    --border: rgb(80, 80, 80);
+}
+
+.dark-mode{
+    --background: #262a33;
+    --text: #d4ced9;
+    --border: #15c8a3;
+}
+
 
 body {
     padding: 0;
     margin: 0;
+    color:var(--text);
 }
 
 button {
-    background-color: rgba(158, 158, 158, 0);
+    background-color: var(--background);
     outline: none;
     border: none;
     padding: 0.3rem 1.8rem;
     margin-top: -0.3rem;
     letter-spacing: 2px;
     border-radius: 0px;
-    border: 1px solid rgb(80, 80, 80);
+    border: 1px solid var(--border);
     transition: all 100ms;
     transform: scale(1);
     cursor: pointer;
+    color:var(--text);
 }
 
 button:hover {
@@ -53,6 +66,8 @@ button:active {
     width: 100vw;
     font-family: monospace;
     font-size: var(--font-size);
+    background-color: var(--background);
+    color: var(--text);
 }
 
 /* ***************************** styles for the test container **************************************** */
@@ -60,6 +75,7 @@ button:active {
 .test-container {
     width: 80vw;
     position: relative;
+    /* z-index:10; */
 }
 
 .test-container::after {
@@ -72,9 +88,9 @@ button:active {
     position: relative;
     bottom: calc(var(--height) - 20px);
     left: calc(100% - 80px);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    z-index: -5;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    z-index: 0;
 }
 
 .test-container::before {
@@ -87,9 +103,9 @@ button:active {
     position: relative;
     top: calc(var(--height) - 20px);
     left: -20px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    z-index: -5;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    z-index: 0;
 }
 
 .focus-warning {
@@ -143,14 +159,14 @@ button:active {
 
 .cursor-move-left {
     height: 100%;
-    border-left: solid 2px black;
+    border-left: solid 2px var(--border);
     position: relative;
     animation: cursor-blink 1000ms infinite, cursor-move-left 100ms;
 }
 
 .cursor-move-right {
     height: 100%;
-    border-left: solid 2px black;
+    border-left: solid 2px var(--border);
     position: relative;
     animation: cursor-blink 1000ms infinite, cursor-move-right 100ms;
 }
@@ -177,7 +193,7 @@ button:active {
 
 @keyframes cursor-blink {
     0% {
-        border-color: black;
+        border-color: var(--border);
     }
 
     50% {
@@ -185,7 +201,7 @@ button:active {
     }
 
     100% {
-        border-color: black;
+        border-color: var(--border);
     }
 }
 
@@ -207,13 +223,13 @@ button:active {
 }
 
 .active-num-words {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgb(80, 80, 80);
+    background-color: var(--background);
+    border: 1px solid var(--border);
 }
 
 .partition {
     height: 100%;
-    border-left: solid 1px black;
+    border-left: solid 1px var(--border);
     margin: 0rem 0.5rem;
 }
 
@@ -234,7 +250,7 @@ button:active {
 }
 
 .bottom-container>div {
-    border-top: 1px solid black;
+    border-top: 1px solid var(--border);
 }
 
 
@@ -262,8 +278,8 @@ button:active {
     position: relative;
     bottom: calc(var(--height) - 10px);
     left: calc(100% - calc(var(--size) - 10px));
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
     z-index: -5;
 }
 
@@ -277,8 +293,8 @@ button:active {
     position: relative;
     top: calc(var(--height) - 10px);
     left: -10px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     z-index: -5;
 }
 
@@ -292,7 +308,7 @@ button:active {
 
 /* ********************************************* media querries *********************** *********** */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 
     body {
         background-color: var(--dark-background);
@@ -336,4 +352,4 @@ button:active {
             border-color: var(--dark-border);
         }
     }
-}
+} */

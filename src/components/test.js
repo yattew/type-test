@@ -109,7 +109,7 @@ function Test() {
                     <div className="num-words-selector">
                         <NumWordsSelector numWords={numWords} setNumWords={setNumWords} numWordsOptions={numWordsOptions} />
                     </div>
-                    <button onClick={newText}>New Test</button>
+                    <button onClick={newText} style={{zIndex:"1"}}>New Test</button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import Help from "./help";
 import About from "./about";
+import ThemeToggle from "./themeToggle";
 
 const OPTIONS = {
     help: <Help />,
@@ -15,6 +16,9 @@ function getDefaultOptions() {
 }
 
 function reducer(prevState, action) {
+    if (action.clicked === "theme") {
+        return getDefaultOptions();
+    }
     let newState = { ...getDefaultOptions(), [action.clicked]: !prevState[action.clicked] };
     return newState;
 }
@@ -29,7 +33,14 @@ function renderOption(optionsState) {
     return option;
 }
 
-function BottomSelector() {
+function toggleTheme(prevTheme, setTheme) {
+    if (prevTheme === "light")
+        setTheme("dark");
+    else if (prevTheme === "dark")
+        setTheme("light");
+}
+
+function BottomSelector({ theme, setTheme }) {
     const [optionsState, dispatch] = useReducer(reducer, getDefaultOptions());
     return (
         <>
@@ -49,6 +60,24 @@ function BottomSelector() {
                     )
                 })
             }
+            <button
+                style={{ margin: "0.5rem" }}
+                onClick={() => { 
+                    toggleTheme(theme, setTheme);
+                    dispatch({clicked:"theme"}) 
+                }}
+            >
+                {
+                    (() => {
+                        if (theme === "light") {
+                            return "dark mode";
+                        }
+                        else if (theme === "dark") {
+                            return "light mode";
+                        }
+                    })()
+                }
+            </button>
         </>
     )
 }
