@@ -1,28 +1,26 @@
 import { useState } from "react";
 
-function Help({ helps }) {
-    const [isOpen, setIsOpen] = useState(false);
-    function handleHelp() {
-        if (isOpen) {
-            setIsOpen(false);
-        }
-        else {
-            setIsOpen(true);
-        }
-    }
+function Help() {
+    let helps = [
+        "Select the Number of words from the selector below the test",
+        "WPM: Words Per Minute",
+        "New Test: Tab + Enter"
+    ];
+
     return (
         <>
-            <div className="helps-container">
-                <button onClick={handleHelp}>Help</button>
-                {
-                    isOpen ?
-                        <div className="helps">
-                            <div>
-                                {helps.map((item, idx) => <li className="help" key={idx}>{item}</li>)}
-                            </div>
-                        </div>
-                        : null
-                }
+            <div className="bottom-box-container">
+                <div className="bottom-box-wrapper">
+                    <div>
+                        {
+                            helps.map((item, idx) =>
+                                <li className="help" key={idx}>
+                                    {item}
+                                </li>
+                            )
+                        }
+                    </div>
+                </div>
             </div>
         </>
     );

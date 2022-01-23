@@ -213,12 +213,16 @@ button:active {
     justify-content: center;
 }
 
+.bottom-container > div{
+    border-top: 1px solid black;
+}
 
-.help-container{
+
+.bottom-box-container{
     position:relative;
 }
 
-.helps{
+.bottom-box-container{
     position: absolute;
     bottom: 50px;
     width:100vw;
@@ -228,10 +232,7 @@ button:active {
     justify-content: center;
 }
 
-.helps > div{
-    /* background-color: blanchedalmond; */
-}
-.helps > div::after {
+.bottom-box-wrapper > div::after {
     --size: 80px;
     --height: calc(var(--size) * 0.3);
     content: '';
@@ -246,7 +247,7 @@ button:active {
     z-index: -5;
 }
 
-.helps > div::before {
+.bottom-box-wrapper > div::before {
     --size: 80px;
     --height: calc(var(--size) * 0.3);
     content: '';
@@ -255,17 +256,16 @@ button:active {
     display: block;
     position: relative;
     top: calc(var(--height) - 10px);
-    left: -30px;
+    left: -10px;
     border-top: 1px solid black;
     border-left: 1px solid black;
     z-index: -5;
 }
 
 .help{
-    max-width: 400px;
-    /* margin-left: 5px; */
-    /* background-color: blanchedalmond; */
-    /* padding: 2rem; */
+    max-width:70vw;
+    margin-left: 20px;
+    margin-right:10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -293,8 +293,9 @@ button:active {
     .test-container::before,
     .test-container::after,
     .active-num-words,
-    .helps > div::before,
-    .helps > div::after {
+    .bottom-box-wrapper > div::before,
+    .bottom-box-wrapper > div::after,
+    .bottom-container > div {
         border-color: var(--dark-border);
     }
 

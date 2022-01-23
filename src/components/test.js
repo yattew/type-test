@@ -26,7 +26,7 @@ function Test() {
     const [charInput, setCharInput] = useState("");
     const [timerState, setTimerState] = useState({ time: 0, state: "paused" });
     const [cursorClass, setCursorClass] = useState("cursor-move-right");
-    const [numWords, setNumWords] = useState(numWordsOptions[Math.floor(numWordsOptions.length/2)]);
+    const [numWords, setNumWords] = useState(numWordsOptions[0]);
     const [wpm, setWpm] = useState(0);
     const inputRef = useRef();
     const isActive = useIsActive("hidden-input");
