@@ -3,7 +3,6 @@ import "./app.css";
 import BottomSelector from "./components/bottomSelector";
 import Help from "./components/help";
 import Test from "./components/test";
-import ThemeToggle from "./components/themeToggle";
 
 
 function App() {
