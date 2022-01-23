@@ -11,6 +11,38 @@ body {
     margin: 0;
 }
 
+button {
+    background-color: rgba(158, 158, 158, 0);
+    outline: none;
+    border: none;
+    padding: 0.3rem 1.8rem;
+    margin-top: -0.3rem;
+    letter-spacing: 2px;
+    border-radius: 0px;
+    border: 1px solid rgb(80, 80, 80);
+    transition: all 100ms;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
 #root {
     display: flex;
     align-items: center;
@@ -22,6 +54,59 @@ body {
     font-family: monospace;
     font-size: var(--font-size);
 }
+
+/* ***************************** styles for the test container **************************************** */
+
+.test-container {
+    width: 80vw;
+    position: relative;
+}
+
+.test-container::after {
+    --size: 100px;
+    --height: calc(var(--size) * 0.5);
+    content: '';
+    width: var(--size);
+    height: var(--height);
+    display: block;
+    position: relative;
+    bottom: calc(var(--height) - 20px);
+    left: calc(100% - 80px);
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    z-index: -5;
+}
+
+.test-container::before {
+    --size: 100px;
+    --height: calc(var(--size) * 0.5);
+    content: '';
+    width: var(--size);
+    height: var(--height);
+    display: block;
+    position: relative;
+    top: calc(var(--height) - 20px);
+    left: -20px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    z-index: -5;
+}
+
+.focus-warning {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 100px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+/* ****************************************************************************************** */
+
+
+/* ***************************** styles for the Text **************************************** */
 
 .hidden-input {
     position: fixed;
@@ -38,14 +123,23 @@ body {
     cursor: context-menu;
 }
 
-.no-select {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.letter {
+    display: inline-block;
+    width: var(--letter-width);
 }
+
+.correct {
+    color: #15c8a3;
+}
+
+.wrong {
+    color: #d33d35;
+}
+
+.word {
+    display: inline-block;
+}
+
 
 .cursor-move-left {
     height: 100%;
@@ -95,72 +189,13 @@ body {
     }
 }
 
-.letter {
-    display: inline-block;
-    width: var(--letter-width);
-}
+/* *********************************************************************************************** */
 
+/* ***************************** styles for the num words **************************************** */
 .controls {
     display: flex;
     justify-content: space-between;
 
-}
-
-.test-container {
-    width: 80vw;
-    position: relative;
-}
-
-.test-container::after {
-    --size: 100px;
-    --height: calc(var(--size) * 0.5);
-    content: '';
-    width: var(--size);
-    height: var(--height);
-    display: block;
-    position: relative;
-    bottom: calc(var(--height) - 20px);
-    left: calc(100% - 80px);
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    z-index: -5;
-}
-
-.test-container::before {
-    --size: 100px;
-    --height: calc(var(--size) * 0.5);
-    content: '';
-    width: var(--size);
-    height: var(--height);
-    display: block;
-    position: relative;
-    top: calc(var(--height) - 20px);
-    left: -20px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    z-index: -5;
-}
-
-button {
-    background-color: rgba(158, 158, 158, 0);
-    outline: none;
-    border: none;
-    padding: 0.3rem 1.8rem;
-    margin-top: -0.3rem;
-    letter-spacing: 2px;
-    border-radius: 0px;
-    border: 1px solid rgb(80, 80, 80);
-    transition: all 100ms;
-    transform: scale(1);
-    cursor: pointer;
-}
-
-button:hover {
-    transform: scale(1.1);
-}
-
-button:active {
-    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .num-words-selector {
@@ -182,57 +217,42 @@ button:active {
     margin: 0rem 0.5rem;
 }
 
-.correct {
-    color: #15c8a3;
-}
-
-.wrong {
-    color: #d33d35;
-}
-
-.focus-warning {
-    position: absolute;
-    width: 100%;
-    height: calc(100% - 100px);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-}
+/* *********************************************************************************************** */
 
 
-.bottom-container{
-    position:fixed;
-    bottom:0px;
-    left:0px;
-    height:50px;
-    width:100vw;
+/* ***************************** styles for the bottom options **************************************** */
+
+.bottom-container {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.bottom-container > div{
+.bottom-container>div {
     border-top: 1px solid black;
 }
 
 
-.bottom-box-container{
-    position:relative;
+.bottom-box-container {
+    position: relative;
 }
 
-.bottom-box-container{
+.bottom-box-container {
     position: absolute;
     bottom: 50px;
-    width:100vw;
-    left:0px;
+    width: 100vw;
+    left: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.bottom-box-wrapper > div::after {
+.bottom-box-wrapper>div::after {
     --size: 80px;
     --height: calc(var(--size) * 0.3);
     content: '';
@@ -247,7 +267,7 @@ button:active {
     z-index: -5;
 }
 
-.bottom-box-wrapper > div::before {
+.bottom-box-wrapper>div::before {
     --size: 80px;
     --height: calc(var(--size) * 0.3);
     content: '';
@@ -262,11 +282,15 @@ button:active {
     z-index: -5;
 }
 
-.help{
-    max-width:70vw;
+.help {
+    max-width: 70vw;
     margin-left: 20px;
-    margin-right:10px;
+    margin-right: 10px;
 }
+/* *********************************************************************************************** */
+
+
+/* ********************************************* media querries *********************** *********** */
 
 @media (prefers-color-scheme: dark) {
 
@@ -293,9 +317,9 @@ button:active {
     .test-container::before,
     .test-container::after,
     .active-num-words,
-    .bottom-box-wrapper > div::before,
-    .bottom-box-wrapper > div::after,
-    .bottom-container > div {
+    .bottom-box-wrapper>div::before,
+    .bottom-box-wrapper>div::after,
+    .bottom-container>div {
         border-color: var(--dark-border);
     }
 
